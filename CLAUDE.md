@@ -22,6 +22,7 @@ See docs/ARCHITECTURE.md for full folder structure.
 - Props always typed with named exported interfaces
 - No business logic in UI components
 - Features do NOT import from other features
+- Always use single quotes for strings in TypeScript/TSX files
 
 ## Rendering Strategy
 - Home (/): Server Component, fetches all products
@@ -32,9 +33,13 @@ See docs/ARCHITECTURE.md for full folder structure.
 ## API — DummyJSON
 Base URL: https://dummyjson.com
 - Search products: GET /products/search?q={query}&limit=20
+  Response: { products: [...], total, skip, limit }
 - Get product by id: GET /products/{id}
-- Get categories: GET /products/categories
-Product has: id, title, price, thumbnail, images, sku, category, description, stock, brand, rating
+- Get category list: GET /products/category-list
+  Response: ["beauty", "fragrances", "smartphones", ...]
+  Usage: fetch all, slice first 5 for empty state suggestions
+
+Product fields available: id, title, price, thumbnail, images[], sku, category, description, stock, brand, rating, discountPercentage
 
 ## File Naming Conventions
 - Components: PascalCase (ProductCard.tsx)
