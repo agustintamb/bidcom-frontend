@@ -1,10 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme inline {
   /* ─── Typography ─────────────────────────────────────────── */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* ─── Colors: Base ───────────────────────────────────────── */
   --color-white: #ffffff;
@@ -18,12 +19,12 @@
   --color-gray-700: #444444;
 
   /* ─── Colors: Primary (blue) ─────────────────────────────── */
-  --color-primary: #0074de;
+  --color-primary: #0000ff;
   --color-primary-dark: #004da0;
   --color-primary-darker: #0000a8;
 
   /* ─── Colors: Links ──────────────────────────────────────── */
-  --color-link: #0000ee;
+  --color-link: #007bff;
 
   /* ─── Colors: Success (green) ────────────────────────────── */
   --color-success: #00a650;
