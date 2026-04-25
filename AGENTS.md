@@ -15,6 +15,7 @@ See CLAUDE.md for stack, conventions, and API details.
 - Add barrel export to index.ts when creating a new component
 - Export props interface alongside the component
 - Use @/ path aliases, never relative paths across features
+- Use single quotes for all strings in TypeScript/TSX files
 
 ---
 
