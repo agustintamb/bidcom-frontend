@@ -20,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="bg-off-white min-h-screen font-sans">
-        <Header />
-        <CategoryNavServer />
+        <div className="sticky top-0 z-50">
+          <Header />
+          <CategoryNavServer />
+        </div>
         <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
       </body>
     </html>

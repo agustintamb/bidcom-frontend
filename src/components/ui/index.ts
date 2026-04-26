@@ -22,3 +22,6 @@ export type {
 
 export { Rating } from './Rating/Rating'
 export type { RatingProps } from './Rating/Rating'
+
+export { Breadcrumb } from './Breadcrumb/Breadcrumb'
+export type { BreadcrumbProps, BreadcrumbItem } from './Breadcrumb/Breadcrumb'

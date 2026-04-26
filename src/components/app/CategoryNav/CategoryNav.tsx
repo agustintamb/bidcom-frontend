@@ -55,7 +55,7 @@ export const CategoryNav = ({ categories }: CategoryNavProps) => {
                   <Link
                     key={cat.slug}
                     href={`/search?category=${encodeURIComponent(cat.slug)}`}
-                    className="hover:text-primary flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-100"
+                    className="hover:text-primary mx-2 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-100"
                     onClick={() => setIsOpen(false)}
                   >
                     {Icon && (

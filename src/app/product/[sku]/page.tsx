@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
-import { Badge, Rating, Typography } from '@/components/ui'
+import { Badge, Breadcrumb, Rating, Typography } from '@/components/ui'
 import { getProductBySku } from '@/features/products'
 import {
   calculateOriginalPrice,
@@ -15,8 +15,6 @@ interface ProductPageProps {
 
 const ProductPage = async ({ params }: ProductPageProps) => {
   const { sku } = await params
-  //const id = Number(sku.split('-')[0])
-  //const product = await getProductById(id)
   const product = await getProductBySku(sku)
 
   if (!product) notFound()
@@ -40,94 +38,108 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     availabilityStatus,
   } = product
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    {
+      label: category.toUpperCase(),
+      href: `/search?category=${encodeURIComponent(category)}`,
+    },
+    { label: title, href: `/product/${sku}` },
+  ]
+
   const originalPrice = calculateOriginalPrice(price, discountPercentage)
   const hasDiscount = discountPercentage > 0
   const isOutOfStock = stock === 0
 
   return (
-    <div className="mx-auto flex max-w-4xl flex-col gap-8">
-      {/* Main info */}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="relative h-80 overflow-hidden rounded-md border border-gray-100 bg-white md:h-96">
-          <Image
-            src={thumbnail}
-            alt={title}
-            fill
-            className="object-contain p-4"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
-        </div>
+    <div className="flex flex-col gap-6">
+      <Breadcrumb items={breadcrumbItems} />
 
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
-            <Typography variant="label" className="text-gray-600 capitalize">
-              {category}
-            </Typography>
-            <Typography variant="h3" weight="bold" className="text-black">
-              {title}
-            </Typography>
-            <Typography variant="body-sm" className="text-gray-400">
-              {brand}
-            </Typography>
+      <div className="w-full max-w-4xl">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {/* Imagen */}
+          <div className="relative h-80 w-full overflow-hidden rounded-md border border-gray-100 bg-white md:h-96">
+            <Image
+              src={thumbnail}
+              alt={title}
+              fill
+              className="object-contain p-4"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
 
-          <Rating value={rating} />
+          {/* Info */}
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+              <Typography variant="label" className="text-gray-600 capitalize">
+                {category}
+              </Typography>
+              <Typography variant="h3" weight="bold" className="text-black">
+                {title}
+              </Typography>
+              <Typography variant="body-sm" className="text-gray-400">
+                {brand}
+              </Typography>
+            </div>
 
-          <div className="flex flex-col gap-1">
-            {hasDiscount && (
-              <div className="flex items-center gap-2">
-                <Typography
-                  variant="body-sm"
-                  className="text-gray-400 line-through"
-                >
-                  {formatPrice(originalPrice)}
-                </Typography>
-                <Badge variant="success">
-                  {formatDiscount(discountPercentage)}
-                </Badge>
-              </div>
+            <Rating value={rating} />
+
+            <div className="flex flex-col gap-1">
+              {hasDiscount && (
+                <div className="flex items-center gap-2">
+                  <Typography
+                    variant="body-sm"
+                    className="text-gray-400 line-through"
+                  >
+                    {formatPrice(originalPrice)}
+                  </Typography>
+                  <Badge variant="success">
+                    {formatDiscount(discountPercentage)}
+                  </Badge>
+                </div>
+              )}
+              <Typography variant="h3" weight="black" className="text-black">
+                {formatPrice(price)}
+              </Typography>
+            </div>
+
+            {isOutOfStock ? (
+              <Badge variant="used" className="w-fit">
+                Sin stock
+              </Badge>
+            ) : (
+              <Typography
+                variant="body-sm"
+                weight="semibold"
+                className="text-success"
+              >
+                {availabilityStatus} — {stock} unidades
+              </Typography>
             )}
-            <Typography variant="h3" weight="black" className="text-black">
-              {formatPrice(price)}
-            </Typography>
-          </div>
 
-          {isOutOfStock ? (
-            <Badge variant="used" className="w-fit">
-              Sin stock
-            </Badge>
-          ) : (
             <Typography
               variant="body-sm"
-              weight="semibold"
-              className="text-success"
+              className="leading-relaxed text-gray-600"
             >
-              {availabilityStatus} — {stock} unidades
+              {description}
             </Typography>
-          )}
 
-          <Typography
-            variant="body-sm"
-            className="leading-relaxed text-gray-600"
-          >
-            {description}
-          </Typography>
-
-          {tags.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <Badge key={tag} variant="outline">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          )}
+            {tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <Badge key={tag} variant="outline">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Info grid */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1 rounded-md border border-gray-100 bg-white p-4">
           <Typography
             variant="label"
@@ -183,7 +195,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
       {/* Reviews */}
       {reviews.length > 0 && (
-        <div className="flex flex-col gap-4">
+        <div className="flex w-full max-w-4xl flex-col gap-4">
           <Typography variant="h4" weight="semibold" className="text-black">
             Opiniones del producto
           </Typography>

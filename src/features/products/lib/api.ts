@@ -1,6 +1,6 @@
 import { API_BASE_URL, CATEGORIES_LIMIT, PRODUCTS_LIMIT } from '@/lib/constants'
 
-import type { Category, Product, ProductsResponse } from './types'
+import type { Category, CategoryItem, Product, ProductsResponse } from './types'
 
 export const searchProducts = async (query: string): Promise<Product[]> => {
   const url = query
@@ -16,7 +16,8 @@ export const searchProducts = async (query: string): Promise<Product[]> => {
 }
 
 export const getProductBySku = async (sku: string): Promise<Product | null> => {
-  const res = await fetch(`${API_BASE_URL}/products?limit=100`, {
+  // No API endpoint for fetching by SKU, so we fetch a larger list and find it client-side
+  const res = await fetch(`${API_BASE_URL}/products?limit=300`, {
     cache: 'no-store',
   })
 
@@ -40,11 +41,10 @@ export const getCategories = async (): Promise<Category[]> => {
   const res = await fetch(`${API_BASE_URL}/products/category-list`, {
     cache: 'force-cache',
   })
-
   if (!res.ok) throw new Error('Failed to fetch categories')
-
   const data: Category[] = await res.json()
-  return data.slice(0, CATEGORIES_LIMIT)
+  const shuffled = [...data].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, CATEGORIES_LIMIT)
 }
 
 export const getCategoryItems = async (): Promise<CategoryItem[]> => {
