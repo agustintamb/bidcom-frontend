@@ -1,4 +1,4 @@
-export function formatPrice(price: number): string {
+export const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency: 'USD',
@@ -6,13 +6,13 @@ export function formatPrice(price: number): string {
   }).format(price)
 }
 
-export function calculateOriginalPrice(
+export const calculateOriginalPrice = (
   price: number,
   discountPercentage: number
-): number {
+): number => {
   return price / (1 - discountPercentage / 100)
 }
 
-export function formatDiscount(discountPercentage: number): string {
+export const formatDiscount = (discountPercentage: number): string => {
   return `${Math.round(discountPercentage)}% OFF`
 }

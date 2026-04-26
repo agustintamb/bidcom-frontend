@@ -10,8 +10,8 @@ export type { CardProps } from './Card/Card'
 export { Input } from './Input/Input'
 export type { InputProps, InputSize } from './Input/Input'
 
-export { Skeleton, SkeletonCard } from './Skeleton/Skeleton'
-export type { SkeletonProps } from './Skeleton/Skeleton'
+export { Skeleton, SkeletonCard, BreadcrumbSkeleton } from './Skeleton/Skeleton'
+export type { SkeletonProps, BreadcrumbSkeletonProps } from './Skeleton/Skeleton'
 
 export { Typography } from './Typography/Typography'
 export type {
