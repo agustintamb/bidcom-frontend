@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { Header } from '@/components/app'
+import { Header, CategoryNavServer } from '@/components/app'
 
 import './globals.css'
 
@@ -21,6 +21,7 @@ export default function RootLayout({
     <html lang="es">
       <body className="bg-off-white min-h-screen font-sans">
         <Header />
+        <CategoryNavServer />
         <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
       </body>
     </html>

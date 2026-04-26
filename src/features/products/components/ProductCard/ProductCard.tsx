@@ -20,6 +20,7 @@ export const ProductCard = ({
   priority = false,
 }: ProductCardProps) => {
   const {
+    //id,
     sku,
     title,
     brand,
