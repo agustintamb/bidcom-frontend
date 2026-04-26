@@ -1,17 +1,19 @@
 'use client'
 
-import { useRouter, useSearchParams } from 'next/navigation'
-import { type SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
-export function useSearch() {
+export const useSearch = () => {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const [value, setValue] = useState(searchParams.get('s') ?? '')
+  const [value, setValue] = useState('')
 
-  function handleSubmit(e: SyntheticEvent<HTMLFormElement, SubmitEvent>) {
+  const handleSubmit = (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
     e.preventDefault()
     const trimmed = value.trim()
-    if (trimmed) router.push(`/search?s=${encodeURIComponent(trimmed)}`)
+    if (trimmed) {
+      router.push(`/search?s=${encodeURIComponent(trimmed)}`)
+      setValue('')
+    }
   }
 
   return { value, setValue, handleSubmit }

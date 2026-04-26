@@ -1,2 +1,5 @@
 export { Header } from './Header/Header'
 export { SearchBar } from './SearchBar/SearchBar'
+export { CategoryNav } from './CategoryNav/CategoryNav'
+export { CategoryNavServer } from './CategoryNav/CategoryNavServer'
+export { Navbar } from './Navbar/Navbar'

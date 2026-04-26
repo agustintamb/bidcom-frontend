@@ -45,7 +45,9 @@ export const Input = ({
 
       <div className="relative flex items-center">
         {leftIcon && (
-          <div className="absolute left-3 text-gray-400">{leftIcon}</div>
+          <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
+            {leftIcon}
+          </div>
         )}
 
         <input
@@ -54,10 +56,9 @@ export const Input = ({
           className={`focus:border-primary w-full rounded-sm border bg-white text-black transition-colors placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 ${sizeStyles[inputSize]} ${leftIcon ? 'pl-10' : ''} ${rightIcon ? 'pr-10' : ''} ${error ? 'border-red-500 focus:border-red-500' : 'border-gray-100'} ${className} `}
           {...props}
         />
-
-        {rightIcon && (
-          <div className="absolute right-3 text-gray-400">{rightIcon}</div>
-        )}
+        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+          {rightIcon}
+        </div>
       </div>
 
       {hint && !error && <p className="text-xs text-gray-400">{hint}</p>}
