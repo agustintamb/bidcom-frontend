@@ -16,3 +16,11 @@ export const calculateOriginalPrice = (
 export const formatDiscount = (discountPercentage: number): string => {
   return `${Math.round(discountPercentage)}% OFF`
 }
+
+export const formatDate = (dateString: string): string => {
+  const date = new Date(dateString)
+  const day = date.getUTCDate().toString().padStart(2, '0')
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0')
+  const year = date.getUTCFullYear()
+  return `${day}/${month}/${year}`
+}

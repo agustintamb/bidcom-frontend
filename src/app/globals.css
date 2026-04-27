@@ -38,6 +38,10 @@
 }
 
 /* ─── Base styles ──────────────────────────────────────────── */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--color-off-white);
   color: var(--color-black);
