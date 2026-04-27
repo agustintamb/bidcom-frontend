@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
 
 export interface BreadcrumbItem {
   label: string
@@ -14,9 +11,6 @@ export interface BreadcrumbProps {
 }
 
 export const Breadcrumb = ({ items, className = '' }: BreadcrumbProps) => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
   const resolvedItems: BreadcrumbItem[] = items ?? [
     { label: 'Home', href: '/' },
   ]

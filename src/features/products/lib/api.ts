@@ -16,9 +16,8 @@ export const searchProducts = async (query: string): Promise<Product[]> => {
 }
 
 export const getProductBySku = async (sku: string): Promise<Product | null> => {
-  // No API endpoint for fetching by SKU, so we fetch a larger list and find it client-side
   const res = await fetch(`${API_BASE_URL}/products?limit=300`, {
-    cache: 'no-store',
+    cache: 'force-cache',
   })
 
   if (!res.ok) throw new Error('Failed to fetch product')
@@ -39,7 +38,7 @@ export const getProductById = async (id: number): Promise<Product | null> => {
 
 export const getCategories = async (): Promise<Category[]> => {
   const res = await fetch(`${API_BASE_URL}/products/category-list`, {
-    cache: 'force-cache',
+    cache: 'no-store',
   })
   if (!res.ok) throw new Error('Failed to fetch categories')
   const data: Category[] = await res.json()
