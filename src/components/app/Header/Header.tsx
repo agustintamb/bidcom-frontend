@@ -2,18 +2,12 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 import { SearchBar } from '../SearchBar/SearchBar'
+import { useHeader } from './useHeader'
 
 export const Header = () => {
-  const [isSticky, setIsSticky] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 0)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const { isSticky } = useHeader()
 
   return (
     <header className="bg-primary sticky top-0 z-50 w-full shadow-md">

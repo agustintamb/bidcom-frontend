@@ -1,5 +1,6 @@
 import { Rating, Typography } from '@/components/ui'
 import type { ProductReview } from '@/features/products/lib/types'
+import { formatDate } from '@/lib/utils/format'
 
 export interface ReviewCardProps {
   review: ProductReview
@@ -13,7 +14,7 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
           {review.reviewerName}
         </Typography>
         <Typography variant="caption" className="text-gray-400">
-          {new Date(review.date).toLocaleDateString('es-AR')}
+          {formatDate(review.date)}
         </Typography>
       </div>
       <Rating value={review.rating} />

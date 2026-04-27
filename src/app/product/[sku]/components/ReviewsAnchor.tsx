@@ -1,7 +1,6 @@
 'use client'
 
-import { Rating } from '@/components/ui'
-import { Button } from '@/components/ui'
+import { Button, Rating } from '@/components/ui'
 
 export interface ReviewsAnchorProps {
   value: number
@@ -9,9 +8,8 @@ export interface ReviewsAnchorProps {
 }
 
 export const ReviewsAnchor = ({ value, count }: ReviewsAnchorProps) => {
-  const handleClick = () => {
+  const handleClick = () =>
     document.getElementById('reviews')?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <div className="flex items-center gap-2">

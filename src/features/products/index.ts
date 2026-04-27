@@ -3,6 +3,7 @@ export {
   getProductBySku,
   getProductById,
   getCategories,
+  searchProductsByCategory,
 } from './lib/api'
 export type { Product, Category } from './lib/types'
 export { ProductCard } from './components/ProductCard/ProductCard'
