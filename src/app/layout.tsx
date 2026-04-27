@@ -16,7 +16,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="es">
-      <body className="bg-off-white min-h-screen font-sans" suppressHydrationWarning>
+      <body
+        className="bg-off-white min-h-screen font-sans"
+        suppressHydrationWarning
+      >
         <div className="sticky top-0 z-50">
           <Header />
           <CategoryNavServer />

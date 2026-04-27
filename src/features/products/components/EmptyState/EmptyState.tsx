@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/components/ui'
+import { Button, Typography } from '@/components/ui'
 import type { Category } from '../../lib/types'
 
 export interface EmptyStateProps {
@@ -21,13 +21,13 @@ export const EmptyState = ({ categories }: EmptyStateProps) => {
         />
 
         <div className="flex flex-col gap-4">
-          <h2 className="text-primary text-2xl font-bold">
+          <Typography variant="h3" weight="bold" className="text-primary">
             No se encontró ningún producto.
-          </h2>
+          </Typography>
           <div className="flex flex-col gap-3">
-            <p className="text-sm font-semibold text-gray-600">
+            <Typography variant="body-sm" weight="semibold" className="text-gray-600">
               Te recomendamos buscar estas categorías:
-            </p>
+            </Typography>
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <Link

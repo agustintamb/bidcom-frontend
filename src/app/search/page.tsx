@@ -3,8 +3,8 @@ import {
   ProductGrid,
   getCategories,
   searchProducts,
+  searchProductsByCategory,
 } from '@/features/products'
-import { searchProductsByCategory } from '@/features/products/lib/api'
 import { Breadcrumb } from '@/components/ui'
 
 interface SearchPageProps {
@@ -38,19 +38,14 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
         : []),
   ]
 
-  if (!products.length) {
-    return (
-      <div className="flex flex-col gap-4">
-        <Breadcrumb items={breadcrumbItems} />
-        <EmptyState categories={categories} />
-      </div>
-    )
-  }
-
   return (
     <div className="flex flex-col gap-4">
       <Breadcrumb items={breadcrumbItems} />
-      <ProductGrid products={products} />
+      {products.length ? (
+        <ProductGrid products={products} />
+      ) : (
+        <EmptyState categories={categories} />
+      )}
     </div>
   )
 }

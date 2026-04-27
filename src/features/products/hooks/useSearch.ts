@@ -1,13 +1,13 @@
 'use client'
 
-import { SyntheticEvent, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export const useSearch = () => {
   const router = useRouter()
   const [value, setValue] = useState('')
 
-  const handleSubmit = (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const trimmed = value.trim()
     if (trimmed) {
