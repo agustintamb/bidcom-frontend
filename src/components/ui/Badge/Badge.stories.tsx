@@ -50,6 +50,7 @@ export const Outline: Story = {
 }
 
 export const AllVariants: Story = {
+  args: { children: '' },
   render: () => (
     <div className="flex flex-wrap gap-3">
       <Badge variant="success">15% OFF</Badge>

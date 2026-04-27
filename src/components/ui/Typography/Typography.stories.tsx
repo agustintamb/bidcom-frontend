@@ -32,6 +32,7 @@ export const Playground: Story = {
 }
 
 export const AllVariants: Story = {
+  args: { children: '' },
   render: () => (
     <div className="flex flex-col gap-4">
       <Typography variant="h1">H1 — Título principal</Typography>
@@ -58,6 +59,7 @@ export const Label: Story = { args: { variant: 'label', children: 'Envío' } }
 export const Price: Story = { args: { variant: 'price', children: '$549.99' } }
 
 export const Weights: Story = {
+  args: { children: '' },
   render: () => (
     <div className="flex flex-col gap-3">
       {(['light', 'normal', 'semibold', 'bold', 'black'] as const).map((w) => (

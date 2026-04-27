@@ -92,6 +92,7 @@ export const Disabled: Story = {
 }
 
 export const Sizes: Story = {
+  args: {},
   render: () => (
     <div className="flex w-80 flex-col gap-4">
       <Input inputSize="sm" placeholder="Small" label="Small" />
