@@ -17,6 +17,7 @@ export const Base: Story = {
 }
 
 export const Sizes: Story = {
+  args: {},
   render: () => (
     <div className="flex flex-col gap-3">
       <Skeleton className="h-3 w-32" />
@@ -29,6 +30,7 @@ export const Sizes: Story = {
 }
 
 export const Card: Story = {
+  args: {},
   render: () => (
     <div className="w-64">
       <SkeletonCard />
@@ -37,6 +39,7 @@ export const Card: Story = {
 }
 
 export const CardGrid: Story = {
+  args: {},
   parameters: { layout: 'padded' },
   render: () => (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -48,16 +51,19 @@ export const CardGrid: Story = {
 }
 
 export const BreadcrumbOne: Story = {
+  args: {},
   name: 'Breadcrumb — 1 ítem',
   render: () => <BreadcrumbSkeleton items={1} />,
 }
 
 export const BreadcrumbTwo: Story = {
+  args: {},
   name: 'Breadcrumb — 2 ítems',
   render: () => <BreadcrumbSkeleton items={2} />,
 }
 
 export const BreadcrumbThree: Story = {
+  args: {},
   name: 'Breadcrumb — 3 ítems',
   render: () => <BreadcrumbSkeleton items={3} />,
 }

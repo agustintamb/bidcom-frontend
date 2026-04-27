@@ -42,6 +42,7 @@ export const WithoutValue: Story = {
 }
 
 export const AllValues: Story = {
+  args: { value: 0 },
   render: () => (
     <div className="flex flex-col gap-3">
       {[5, 4, 3, 2, 1].map((v) => (

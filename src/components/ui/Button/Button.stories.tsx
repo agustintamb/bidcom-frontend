@@ -52,6 +52,7 @@ export const Disabled: Story = {
 }
 
 export const Sizes: Story = {
+  args: { children: '' },
   render: () => (
     <div className="flex items-center gap-4">
       <Button variant="primary" size="sm">Pequeño</Button>
@@ -62,6 +63,7 @@ export const Sizes: Story = {
 }
 
 export const AllVariants: Story = {
+  args: { children: '' },
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
       <Button variant="primary">Primary</Button>

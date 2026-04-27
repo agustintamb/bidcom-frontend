@@ -60,5 +60,6 @@ export const FewProducts: Story = {
 }
 
 export const Skeleton: Story = {
+  args: { products: [] },
   render: () => <ProductGridSkeleton />,
 }
