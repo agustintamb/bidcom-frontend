@@ -7,9 +7,6 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Bidcom',
   description: 'Electrónica y tecnología al mejor precio',
-  icons: {
-    icon: 'https://d1blmgc4psac6k.cloudfront.net/images/vector/favicon.svg?v=0.1',
-  },
 }
 
 export default function RootLayout({
