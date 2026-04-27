@@ -24,7 +24,7 @@ export const Header = () => {
       >
         <Link href="/" aria-label="Ir al inicio" className="shrink-0">
           <Image
-            src="https://static.bidcom.com.ar/images/vector/logo_bidcom.svg?v=0.1"
+            src="/logo.svg"
             alt="Bidcom"
             width={163}
             height={64}
